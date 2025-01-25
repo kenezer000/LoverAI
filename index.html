@@ -215,25 +215,28 @@
 </head>
 <body>
     <div class="heart-background"></div>
-    <a href="https://t.me/yarstarr" class="support-button">Поддержать автора</a>
+     <a href="https://t.me/yarstarr" class="support-button" onclick="ym(99659923, 'reachGoal', 'support-author');">
+        Поддержать автора
+    </a>
     <div class="container">
         <img src="Frame 2467.png" alt="LoverAI Logo" class="logo">
         <h1 id="main-text">Влюбляй и вдохновляй с LoverAI</h1>
         <p id="description">
             Бот, который даст ответ на его/её сообщение.
         </p>
-        <a href="https://t.me/loverai_bot?start=cvfjjn" class="button" id="start-button">
+        <a href="https://t.me/loverai_bot?start=cvfjjn" class="button" id="start-button" 
+           onclick="ym(99659923, 'reachGoal', 'bot-link-click');">
             Начать общение
         </a>
     </div>
     <div class="language-switcher">
         <button class="language-button" onclick="toggleLanguageMenu()">🌐 Язык</button>
         <div class="language-menu">
-            <button onclick="setLanguage('ru')">Русский</button>
-            <button onclick="setLanguage('en')">English</button>
-            <button onclick="setLanguage('de')">Deutsch</button>
-            <button onclick="setLanguage('fr')">Français</button>
-            <button onclick="setLanguage('zh')">中文</button>
+            <button onclick="setLanguage('ru'); ym(99659923, 'reachGoal', 'language-russian');">Русский</button>
+            <button onclick="setLanguage('en'); ym(99659923, 'reachGoal', 'language-english');">English</button>
+            <button onclick="setLanguage('de'); ym(99659923, 'reachGoal', 'language-german');">Deutsch</button>
+            <button onclick="setLanguage('fr'); ym(99659923, 'reachGoal', 'language-french');">Français</button>
+            <button onclick="setLanguage('zh'); ym(99659923, 'reachGoal', 'language-chinese');">中文</button>
         </div>
     </div>
     <!-- Yandex.Metrika counter -->
