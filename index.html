@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoverAI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffc0cb; /* Розовый фон */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1; /* Поверх сердечек */
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 22px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #b71c1c;
+        }
+
+        .support-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            z-index: 2;
+        }
+
+        .support-button:hover {
+            background-color: #eee;
+        }
+
+        .language-switcher {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .language-button {
+            font-size: 12px;
+            background: none;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .language-button:hover {
+            background-color: #eee;
+        }
+
+        .language-menu {
+            position: absolute;
+            bottom: 60px;
+            left: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-menu button {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .language-menu button:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Фон с сердечками */
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d32f2f;
+            transform: rotate(-45deg);
+            opacity: 0.8;
+        }
+
+        .heart.blue {
+            background-color: #1e88e5;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: inherit; /* Цвет совпадает с сердечком */
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+    </style>
+    <script>
+        const translations = {
+            ru: {
+                mainText: "Влюбляй и вдохновляй с LoverAI",
+                description: "Бот, который даст ответ на его/её сообщение.",
+                startButton: "Начать общение",
+            },
+            en: {
+                mainText: "Inspire and fall in love with LoverAI",
+                description: "A bot that will answer his/her message.",
+                startButton: "Start Chatting",
+            },
+            de: {
+                mainText: "Verlieben und inspirieren mit LoverAI",
+                description: "Ein Bot, der auf seine/ihre Nachricht antwortet.",
+                startButton: "Mit dem Chatten beginnen",
+            },
+            fr: {
+                mainText: "Tomber amoureux et inspirer avec LoverAI",
+                description: "Un bot qui répondra à son message.",
+                startButton: "Commencer à discuter",
+            },
+            zh: {
+                mainText: "与 LoverAI 一起坠入爱河并获得灵感",
+                description: "一个可以回复他/她消息的机器人。",
+                startButton: "开始聊天",
+            },
+        };
+
+        function setLanguage(lang) {
+            document.getElementById("main-text").textContent = translations[lang].mainText;
+            document.getElementById("description").textContent = translations[lang].description;
+            document.getElementById("start-button").textContent = translations[lang].startButton;
+        }
+
+        function toggleLanguageMenu() {
+            const menu = document.querySelector('.language-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Установить русский язык по умолчанию
+            setLanguage("ru");
+        });
+    </script>
+</head>
+<body>
+    <div class="heart-background"></div>
+    <a href="https://t.me/yarstarr" class="support-button">Поддержать автора</a>
+    <div class="container">
+        <img src="Frame 2467.png" alt="LoverAI Logo" class="logo">
+        <h1 id="main-text">Влюбляй и вдохновляй с LoverAI</h1>
+        <p id="description">
+            Бот, который даст ответ на его/её сообщение.
+        </p>
+        <a href="https://t.me/loverai_bot?start=cvfjjn" class="button" id="start-button">
+            Начать общение
+        </a>
+    </div>
+    <div class="language-switcher">
+        <button class="language-button" onclick="toggleLanguageMenu()">🌐 Язык</button>
+        <div class="language-menu">
+            <button onclick="setLanguage('ru')">Русский</button>
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('de')">Deutsch</button>
+            <button onclick="setLanguage('fr')">Français</button>
+            <button onclick="setLanguage('zh')">中文</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
